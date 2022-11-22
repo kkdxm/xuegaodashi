@@ -1,7 +1,7 @@
 function getIdNo() {
      var g = ["7", "9", "10", "5", "8", "4", "2", "1", "6", "3", "7", "9", "10", "5", "8", "4", "2"]; 
      var c = ["1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2"]; 
-     var h = "420101"; 
+     var h = "610101";//"420101"; 
      var j = "" + (parseInt(40 * Math.random()) + 1960) + "0" + (parseInt(9 * Math.random()) + 1) + (parseInt(20 * Math.random()) + 10); 
      var k = Math.floor(Math.random() * 10).toString() + Math.floor(Math.random() * 10).toString() + Math.floor(Math.random() * 10).toString(); 
      var e = (h + j + k).split(""); var f = 0; for (var b = 0; b < e.length; b++) { f = f + parseInt(e[b]) * parseInt(g[b]) } 
@@ -55,27 +55,27 @@ function getMoble() {
 } 
 function genrate() { 
     trs = ""; 
-    for (var a = 1; a <= 20; a++) { 
+    for (var a = 1; a <= 15; a++) { 
         trs = trs + "<tr><td>" + a + '</td><td><span class="clipboard">' 
         + getName() 
         + '</span></td><td> 手机号：<span class="clipboard">' 
         + getMoble() 
         + '</span><br/>身份证：<span class="clipboard">' 
         + getIdNo() 
-        + '</span><br/>银行卡：<span class="clipboard">' 
-        + getBankAccount() + "</span></td></tr>" 
+        // + '</span><br/>银行卡：<span class="clipboard">' 
+        // + getBankAccount() + "</span>"
+        + "</td></tr>" 
     } 
     trs = "<table>" + trs + "</table>"; 
     document.getElementById("list").innerHTML = trs; 
-    // $(".clipboard").attr("onclick", "copyToClipboard(this)") 
+    $(".clipboard").attr("onclick", "copyToClipboard(this)")
 } 
 window.onload = function () { genrate() }; 
 function copyToClipboard(a) { 
-    // var b = $("<input>"); $("body").append(b); 
-    // b.val($(a).text()).select(); 
-    // document.execCommand("copy"); 
-    // b.remove(); 
-    // layer.msg("复制成功", { offset: "80%", time: 1000 }); 
-    // $(".clipboard").removeClass("red-border"); 
-    // $(a).addClass("red-border") 
+    var b = $("<input>"); $("body").append(b); 
+    b.val($(a).text()).select(); 
+    document.execCommand("copy"); 
+    b.remove(); 
+    $(".clipboard").css("background-color", ""); 
+    $(a).css("background-color", "lightgreen"); 
 };
